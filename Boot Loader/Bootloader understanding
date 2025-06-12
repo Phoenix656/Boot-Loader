@@ -1,0 +1,21 @@
+how does a bootloader starts
+
+OS doesn't start as we press power on it starts when we select/gets selected(default) by the boot loader 
+
+so how does boot loader works it. First the works is of BIOS that immediately looks at the physical address of "0xFFFFFFF0" for bios code,
+(somewhere on ROM that's only  available for read) 
+which after wards checks for acceptable boot devices.
+The BIOS accepts the device as a working after checking the first 512 bytes of the disk are whether readable or not and then checks for the end in the exact bytes 0x55AA, which is boot signature of the medium.
+
+If the bios recognizes the drive bootable then it loads the first 512 bytes of the drive into memry address 0x007C00 and transfers program control to this address with a jump instructions to the processor.
+
+and then what i learned was a lot about how BIOS loads multiple device(by selecting the most largest and  real OS
+
+i now also learned that CPU and BIOS others have a Prrocessors mode which are 1)real mode  2) protected mode
+
+in real mode it provides direct access to all adderssable memory, I/O addresses and perpheral hardware 
+Real mode provides no memory protection, multitasking, or code privilege levels
+The mode gets its name from the fact that addresses in real mode always correspond to real locations in memory. Real mode is characterized by a 20-bit segmented memory address space (giving 1 MB of addressable memory)
+
+I protected mode  It allows system software to use features such as segmentation, virtual memory, paging and safe multi-tasking designed to increase an operating system's control over application software.
+what exactly protected mode does is doesn't give the control to Software but it takes instructions and run those instruction in real mode.
